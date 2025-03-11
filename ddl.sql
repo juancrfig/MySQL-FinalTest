@@ -38,6 +38,7 @@ CREATE TABLE ciudad (
     id_ciudad SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL CHECK(TRIM(nombre) != ''),
     id_pais SMALLINT UNSIGNED NOT NULL,
+
     FOREIGN KEY(id_pais) REFERENCES pais(id_pais)
 );
 
@@ -52,6 +53,7 @@ CREATE TABLE direccion (
     codigo_postal VARCHAR(10) NOT NULL CHECK(TRIM(codigo_postal) != ''),
     telefono VARCHAR(20) NOT NULL CHECK(TRIM(telefono) != ''),
     ultima_actualizacion TIMESTAMP NOT NULL,
+
     FOREIGN KEY(id_ciudad) REFERENCES ciudad(id_ciudad)
 );
 
@@ -69,6 +71,7 @@ CREATE TABLE empleado (
     username VARCHAR(16) NOT NULL CHECK(TRIM(username) != ''),
     password VARCHAR(40) NOT NULL CHECK(TRIM(password) != ''),
     ultima_actualizacion TIMESTAMP NOT NULL,
+
     FOREIGN KEY(id_direccion) REFERENCES direccion(id_direccion)
 );
 
@@ -95,6 +98,7 @@ CREATE TABLE almacen (
     id_empleado_jefe TINYINT UNSIGNED NOT NULL,
     id_direccion SMALLINT UNSIGNED NOT NULL,
     ultima_actualizacion TIMESTAMP NOT NULL,
+
     FOREIGN KEY(id_empleado_jefe) REFERENCES empleado(id_empleado),
     FOREIGN KEY(id_direccion) REFERENCES direccion(id_direccion)
 );
@@ -111,6 +115,28 @@ CREATE TABLE cliente (
     activo TINYINT(1) NOT NULL,
     fecha_creacion DATETIME NOT NULL,
     ultima_actualizacion TIMESTAMP NOT NULL,
+
     FOREIGN KEY(id_almacen) REFERENCES almacen(id_almacen),
     FOREIGN KEY(id_direccion) REFERENCES direccion(id_direccion)
+);
+
+-- Create table "pelicula"
+
+CREATE TABLE pelicula (
+    id_pelicula SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(255) NOT NULL CHECK(TRIM(titulo) != ''),
+    description TEXT NOT NULL,
+    anyo_lanzamiento YEAR NOT NULL,
+    id_idioma TINYINT UNSIGNED NOT NULL,
+    id_idioma_original TINYINT UNSIGNED NOT NULL,
+    duracion_alquiler TINYINT UNSIGNED NOT NULL,
+    rental_rate DECIMAL(4,2),
+    duracion SMALLINT UNSIGNED NOT NULL,
+    replacement_cost DECIMAL(5,2) NOT NULL,
+    clasificacion ENUM('G', 'PG', 'PG-13', 'R', 'NC-17') NOT NULL,
+    caracteristicas_especiales SET('Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes'),
+    ultima_actualizacion TIMESTAMP NOT NULL,
+
+    FOREIGN KEY(id_idioma) REFERENCES idioma(id_idioma),
+    FOREIGN KEY(id_idioma_original) REFERENCES idioma(id_idioma)
 );
