@@ -164,3 +164,15 @@ CREATE TABLE pelicula_categoria (
     FOREIGN KEY(id_pelicula) REFERENCES pelicula(id_pelicula),
     FOREIGN KEY(id_categoria) REFERENCES categoria(id_categoria)
 );
+
+-- Create table "inventario"
+
+CREATE TABLE inventario (
+    id_inventario MEDIUMINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_pelicula SMALLINT UNSIGNED NOT NULL,
+    id_almacen TINYINT UNSIGNED NOT NULL,
+    ultima_actualizacion TIMESTAMP NOT NULL,
+
+    FOREIGN KEY(id_pelicula) REFERENCES pelicula(id_pelicula),
+    FOREIGN KEY(id_almacen) REFERENCES almacen(id_almacen)
+);
