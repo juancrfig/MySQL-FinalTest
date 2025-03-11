@@ -32,7 +32,14 @@ CREATE TABLE (
 
 CREATE TABLE direccion (
     id_direccion SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    
+    direccion VARCHAR(50) NOT NULL CHECK(TRIM(direccion) != ''),
+    direccion2 VARCHAR(50) NOT NULL CHECK(TRIM(direccion2) != ''),
+    distrito VARCHAR(20) NOT NULL CHECK(TRIM(distrito) != ''),
+    id_ciudad SMALLINT UNSIGNED NOT NULL,
+    codigo_postal VARCHAR(10) NOT NULL CHECK(TRIM(codigo_postal) != ''),
+    telefono VARCHAR(20) NOT NULL CHECK(TRIM(telefono) != ''),
+    ultima_actualizacion TIMESTAMP NOT NULL,
+    FOREIGN KEY(id_ciudad) REFERENCES ciudad(id_ciudad)
 );
 
 -- Create table "ciudad"
