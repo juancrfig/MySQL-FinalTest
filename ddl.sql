@@ -140,3 +140,15 @@ CREATE TABLE pelicula (
     FOREIGN KEY(id_idioma) REFERENCES idioma(id_idioma),
     FOREIGN KEY(id_idioma_original) REFERENCES idioma(id_idioma)
 );
+
+-- Create table pelicula_actor
+
+CREATE TABLE pelicula_actor (
+    id_actor SMALLINT UNSIGNED NOT NULL,
+    id_pelicula SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY(id_actor, id_pelicula),
+    ultima_actualizacion TIMESTAMP NOT NULL,
+
+    FOREIGN KEY(id_actor) REFERENCES actor(id_actor),
+    FOREIGN KEY(id_pelicula) REFERENCES pelicula(id_pelicula)
+);
