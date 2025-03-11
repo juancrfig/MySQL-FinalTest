@@ -176,3 +176,21 @@ CREATE TABLE inventario (
     FOREIGN KEY(id_pelicula) REFERENCES pelicula(id_pelicula),
     FOREIGN KEY(id_almacen) REFERENCES almacen(id_almacen)
 );
+
+-- Create table "alquiler"
+
+CREATE TABLE alquiler (
+    id_alquiler INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    fecha_alquiler DATETIME NOT NULL,
+    id_inventario MEDIUMINT UNSIGNED NOT NULL,
+    id_cliente SMALLINT UNSIGNED NOT NULL,
+    fecha_devolucion DATETIME NOT NULL,
+    id_empleado TINYINT UNSIGNED NOT NULL,
+    ultima_actualizacion TIMESTAMP NOT NULL,
+
+    FOREIGN KEY(id_inventario) REFERENCES inventario(id_inventario),
+    FOREIGN KEY(id_cliente) REFERENCES cliente(id_cliente),
+    FOREIGN KEY(id_empleado) REFERENCES empleado(id_empleado)
+);
+
+--
