@@ -85,3 +85,13 @@ CREATE TABLE categoria (
     ultima_actualizacion TIMESTAMP NOT NULL
 );
 
+-- Create table "almacen"
+
+CREATE TABLE almacen (
+    id_almacen TINYINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_empleado_jefe TINYINT UNSIGNED NOT NULL,
+    id_direccion SMALLINT UNSIGNED NOT NULL,
+    ultima_actualizacion TIMESTAMP NOT NULL,
+    FOREIGN KEY(id_empleado_jefe) REFERENCES empleado(id_empleado),
+    FOREIGN KEY(id_direccion) REFERENCES direccion(id_direccion)
+);
