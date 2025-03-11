@@ -18,6 +18,16 @@ CREATE TABLE (
 );
 
 
+
+-- Create table "actor"
+
+CREATE TABLE actor (
+    id_actor SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(45) NOT NULL CHECK(TRIM(nombre) != ''),
+    apellidos VARCHAR(45) NOT NULL CHECK(TRIM(apellidos) != ''),
+    ultima_actualizacion TIMESTAMP NOT NULL
+);
+
 -- Create table "idioma"
 
 CREATE TABLE (
