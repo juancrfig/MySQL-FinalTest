@@ -4,6 +4,9 @@ CREATE DATABASE sakilacampus CHARACTER SET utf8mb4;
 USE sakilacampus;
 
 
+-- CREATION OF TABLES
+
+
 -- Create table "actor"
 
 CREATE TABLE actor (
@@ -93,5 +96,21 @@ CREATE TABLE almacen (
     id_direccion SMALLINT UNSIGNED NOT NULL,
     ultima_actualizacion TIMESTAMP NOT NULL,
     FOREIGN KEY(id_empleado_jefe) REFERENCES empleado(id_empleado),
+    FOREIGN KEY(id_direccion) REFERENCES direccion(id_direccion)
+);
+
+-- Create table "cliente"
+
+CREATE TABLE cliente (
+    id_cliente SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_almacen TINYINT UNSIGNED NOT NULL,
+    nombre VARCHAR(45) NOT NULL CHECK(TRIM(nombre) != ''),
+    apellidos VARCHAR(45) NOT NULL CHECK(TRIM(apellidos) != ''),
+    email VARCHAR(50) NOT NULL CHECK(TRIM(email) != ''),
+    id_direccion SMALLINT UNSIGNED NOT NULL,
+    activo TINYINT(1) NOT NULL,
+    fecha_creacion DATETIME NOT NULL,
+    ultima_actualizacion TIMESTAMP NOT NULL,
+    FOREIGN KEY(id_almacen) REFERENCES almacen(id_almacen),
     FOREIGN KEY(id_direccion) REFERENCES direccion(id_direccion)
 );
