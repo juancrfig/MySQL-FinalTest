@@ -38,6 +38,7 @@ CREATE TABLE ciudad (
     id_ciudad SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL CHECK(TRIM(nombre) != ''),
     id_pais SMALLINT UNSIGNED NOT NULL,
+    ultima_actualizacion TIMESTAMP NOT NULL,
 
     FOREIGN KEY(id_pais) REFERENCES pais(id_pais)
 );
