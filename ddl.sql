@@ -193,4 +193,18 @@ CREATE TABLE alquiler (
     FOREIGN KEY(id_empleado) REFERENCES empleado(id_empleado)
 );
 
---
+-- Create table "pago"
+
+CREATE TABLE pago (
+    id_pago SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_cliente SMALLINT UNSIGNED NOT NULL,
+    id_empleado TINYINT UNSIGNED NOT NULL,
+    id_alquiler INT UNSIGNED NOT NULL,
+    total DECIMAL(5,2) NOT NULL,
+    fecha_pago DATETIME NOT NULL,
+    ultima_actualizacion TIMESTAMP NOT NULL,
+
+    FOREIGN KEY(id_cliente) REFERENCES cliente(id_cliente),
+    FOREIGN KEY(id_empleado) REFERENCES empleado(id_empleado),
+    FOREIGN KEY(id_alquiler) REFERENCES alquiler(id_alquiler)
+);
