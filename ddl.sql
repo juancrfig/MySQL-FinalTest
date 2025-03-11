@@ -47,7 +47,8 @@ CREATE TABLE direccion (
 CREATE TABLE ciudad (
     id_ciudad SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL CHECK(TRIM(nombre) != ''),
-    id_pais SMALLINT UNSIGNED NOT NULL
+    id_pais SMALLINT UNSIGNED NOT NULL,
+    FOREIGN KEY(id_pais) REFERENCES pais(id_pais)
 );
 
 -- Create table "pais"
