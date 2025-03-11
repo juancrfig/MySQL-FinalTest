@@ -26,7 +26,22 @@ CREATE TABLE (
     ultima_actualizacion TIMESTAMP NOT NULL
 );
 
+-- Create table "empleado"
 
+CREATE TABLE empleado (
+    id_empleado TINYINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(45) NOT NULL CHECK(TRIM(nombre) != ''),
+    apellidos VARCHAR(45) NOT NULL CHECK(TRIM(apellidos) != ''),
+    id_direccion SMALLINT UNSIGNED NOT NULL,
+    imagen BLOB,
+    email VARCHAR(50) NOT NULL CHECK(TRIM(email) != ''),
+    id_almacen TINYINT UNSIGNED NOT NULL,
+    activo TINYINT(1),
+    username VARCHAR(16) NOT NULL CHECK(TRIM(username) != ''),
+    password VARCHAR(40) NOT NULL CHECK(TRIM(password) != ''),
+    ultima_actualizacion TIMESTAMP NOT NULL,
+    FOREIGN KEY(id_direccion) REFERENCES direccion(id_direccion)
+);
 
 -- Create table direccion
 
