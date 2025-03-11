@@ -19,6 +19,8 @@ CREATE TABLE (
 
 
 
+
+
 -- Create table "actor"
 
 CREATE TABLE actor (
@@ -82,4 +84,12 @@ CREATE TABLE pais (
     id_pais SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL CHECK(TRIM(nombre) != ''),
     ultima_actualizacion TIMESTAMP NOT NULL
+);
+
+-- Create table "film_text"
+
+CREATE TABLE film_text (
+    film_id SMALLINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL CHECK(TRIM(title) != ''),
+    description TEXT NOT NULL
 );
