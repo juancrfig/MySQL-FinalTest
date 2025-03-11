@@ -141,7 +141,7 @@ CREATE TABLE pelicula (
     FOREIGN KEY(id_idioma_original) REFERENCES idioma(id_idioma)
 );
 
--- Create table pelicula_actor
+-- Create table "pelicula_actor"
 
 CREATE TABLE pelicula_actor (
     id_actor SMALLINT UNSIGNED NOT NULL,
@@ -151,4 +151,16 @@ CREATE TABLE pelicula_actor (
 
     FOREIGN KEY(id_actor) REFERENCES actor(id_actor),
     FOREIGN KEY(id_pelicula) REFERENCES pelicula(id_pelicula)
+);
+
+-- Create table "pelicula_categoria" 
+
+CREATE TABLE pelicula_categoria (
+    id_pelicula SMALLINT UNSIGNED NOT NULL,
+    id_categoria TINYINT UNSIGNED NOT NULL,
+    PRIMARY KEY(id_pelicula, id_categoria),
+    ultima_actualizacion TIMESTAMP NOT NULL,
+
+    FOREIGN KEY(id_pelicula) REFERENCES pelicula(id_pelicula),
+    FOREIGN KEY(id_categoria) REFERENCES categoria(id_categoria)
 );
